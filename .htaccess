@@ -1,6 +1,7 @@
 ErrorDocument 403 "By default, Mutillidae only allows access from localhost (127.*.*.*). Edit the .htaccess file to change this behavior (not recommended on a public network)."
 Order Deny,Allow
 Deny from all
+Allow from 20.119.8.41
 
 ## This allows access from localhost
 Allow from 127.
