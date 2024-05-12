@@ -1,16 +1,14 @@
-ErrorDocument 403 "By default, Mutillidae only allows access from localhost (127.*.*.*). Edit the .htaccess file to change this behavior (not recommended on a public network)."
+# This .htaccess file helps prevent access to Mutillidae II from external IP addresses in case someone deploys the project accidentially. If this file is deleted, there is no network access control
+
+ErrorDocument 403 "By default, Mutillidae II only allows access from non-routable network addresses. Edit the .htaccess file to change this behavior. Delete the .htaccess file if network access is controlled using a different method."
 Order Deny,Allow
+Deny from all
+
+## Allow access from localhost
 Allow from all
+Allow from localhost
 
-## Supprimez ces lignes si vous souhaitez autoriser l'accès depuis toutes les adresses IP ##
-# Allow from 127.
-# Allow from localhost
-# Allow from 192.168.0.0/16
-
-## Autorisez spécifiquement l'accès depuis l'adresse IP 20.119.16.29 ##
-Allow from 20.119.16.29
-
-## Le reste de votre configuration ##
-php_flag magic_quotes_gpc off
-php_flag magic_quotes_sybase off
-php_flag magic_quotes_runtime off
+## Allow access from other machines on non-routable networks
+Allow from 10.0.0.0/8
+Allow from 172.16.0.0/12
+Allow from 192.168.0.0/16
